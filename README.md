@@ -144,4 +144,4 @@ Arkni		Brahim
 The sample output files can be seen [here](https://github.com/Arkni/json-to-csv/blob/master/files).
 
 #### Licence
-Ce projet est réaliser par EL KADI KAMAL.
+Ce projet est réaliser par EL KADI KAMAL et OUEDRAOGO Hamid-Abdoul Hakim.
