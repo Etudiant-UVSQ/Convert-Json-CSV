@@ -22,10 +22,11 @@ public class Main {
 			CsvMapper csvMapper = new CsvMapper();
 			csvMapper.writerFor(JsonNode.class)
 			  .with(csvSchema)
-			  .writeValue(new File("files/config.csv"), jsonTree);
+			  .writeValue(new File("/root/IdeaProjects/Convert-Json-CSV/files/config.csv"), jsonTree);
 		} catch (Exception e) {
 			System.out.println("Erreur message : " + e.getMessage());
 		}
 		
 	}
+
 }
