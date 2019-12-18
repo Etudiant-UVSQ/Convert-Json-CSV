@@ -3,7 +3,7 @@
 Conversion de JSON à CSV
 Il s'agit d'une version modifiée du projet json-to-csv.
 
-Ce code peut être utilisé pour générer un fichier CSV plat à partir d'une liste d'objets JSON, et ainsi il génère un fichier Json à partir d'un fichier CSV. 
+Ce code peut être utilisé pour générer un fichier CSV à partir d'une liste d'objets JSON, et ainsi il génère un fichier Json à partir d'un fichier CSV. 
 
 #### Usage de l'application:
 
