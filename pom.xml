@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-<<<<<<< HEAD
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
@@ -59,6 +58,41 @@
 
 
     </dependencies>
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.1.1</version>
+                <configuration>
+                    <javadocExecutable>${java.home}/bin/javadoc</javadocExecutable>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>3.1.0</version>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>checkstyle</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>findbugs-maven-plugin</artifactId>
+                <version>3.0.5</version>
+                <configuration>
+                    <xmlOutput>true</xmlOutput>
+                    <!-- Optional directory to put findbugs xdoc xml report -->
+                    <xmlOutputDirectory>target/site</xmlOutputDirectory>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </reporting>
 
     <build>
         <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
@@ -115,104 +149,4 @@
             </plugin>
         </plugins>
     </build>
-=======
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-
-  <groupId>fr.uvsq.EtudiantUVSQ</groupId>
-  <artifactId>Convertion</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>jar</packaging>
-
-  <name>Convertion</name>
-  <url>http://maven.apache.org</url>
-
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
-
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-	    <groupId>com.fasterxml.jackson.dataformat</groupId>
-	    <artifactId>jackson-dataformat-csv</artifactId>
-	    <version>2.9.8</version>
-	</dependency>
-	<dependency>
-	    <groupId>com.fasterxml.jackson.core</groupId>
-	    <artifactId>jackson-databind</artifactId>
-	    <version>2.9.8</version>
-	</dependency>
-	<dependency>
-	    <groupId>org.json</groupId>
-	    <artifactId>json</artifactId>
-	    <version>20090211</version>
-	</dependency>
-	<!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
-	<dependency>
-	    <groupId>commons-io</groupId>
-	    <artifactId>commons-io</artifactId>
-	    <version>2.6</version>
-	</dependency>
-	
-	
-  </dependencies>
-  <reporting>
-	    <plugins>
-		      <plugin>
-		        <groupId>org.apache.maven.plugins</groupId>
-		        <artifactId>maven-javadoc-plugin</artifactId>
-		        <version>3.1.1</version>
-		        <configuration>
-		        	<javadocExecutable>${java.home}/bin/javadoc</javadocExecutable>
-		        </configuration>
-		      </plugin>
-	           <plugin>
-			          <groupId>org.apache.maven.plugins</groupId>
-			          <artifactId>maven-checkstyle-plugin</artifactId>
-			          <version>3.1.0</version>
-			          <reportSets>
-			            <reportSet>
-			              <reports>
-			                <report>checkstyle</report>
-			              </reports>
-			            </reportSet>
-			          </reportSets>
-	           </plugin>
-		        <plugin>
-			        <groupId>org.codehaus.mojo</groupId>
-			        <artifactId>findbugs-maven-plugin</artifactId>
-			        <version>3.0.6-SNAPSHOT</version>
-			        <configuration>
-			          <xmlOutput>true</xmlOutput>
-			          <!-- Optional directory to put findbugs xdoc xml report -->
-			          <xmlOutputDirectory>target/site</xmlOutputDirectory>
-			        </configuration>
-	             </plugin>
-     
-	    </plugins>
-	  </reporting>
-	  <build>
-		 <plugins>
-			 <plugin>
-				 <artifactId>maven-assembly-plugin</artifactId>
-				 <configuration>
-				 <archive>
-				 <manifest>
-				 <mainClass>/Convertion/src/main/java/fr/uvsq/EtudiantUVSQ/Convertion/Main.java</mainClass>
-				 </manifest>
-				 </archive>
-				 <descriptorRefs>
-				 <descriptorRef>jar-with-dependencies</descriptorRef>
-				 </descriptorRefs>
-				 </configuration>
-			 </plugin>
-		 </plugins>
-      </build>
->>>>>>> ebe8cf66d4b6dcb4ebee980a7638a3138f1c39b8
 </project>
