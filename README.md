@@ -5,7 +5,7 @@ Il s'agit d'une version modifiée du projet json-to-csv.
 
 Ce code peut être utilisé pour générer un fichier CSV plat à partir d'une liste d'objets JSON, et ainsi il génère un fichier Json à partir d'un fichier CSV. 
 
-#### Usage:
+#### Usage de l'application:
 
 1 - Using a JSON String:
 
@@ -144,4 +144,4 @@ Arkni		Brahim
 The sample output files can be seen [here](https://github.com/Arkni/json-to-csv/blob/master/files).
 
 #### Licence
-See the [LICENCE](https://github.com/Arkni/json-to-csv/blob/master/LICENCE) file.
+Ce projet est réaliser par EL KADI KAMAL.
