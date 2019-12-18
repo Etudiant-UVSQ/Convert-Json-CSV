@@ -1,10 +1,9 @@
 #### JSON To CSV Convert
 
-This is a modified version of [json-to-csv](https://github.com/SEL-Columbia/json-to-csv) project.
+Conversion de JSON à CSV
+Il s'agit d'une version modifiée du projet json-to-csv.
 
-This code can be used for generating a flat CSV file from a list of JSON Objects.
-The [JSONFlattener](https://github.com/Arkni/json-to-csv/blob/master/src/main/java/org/jsontocsv/parser/JSONFlattener.java) will create list of key-value pairs for the generated JSON.
-The [CSVWriter](https://github.com/Arkni/json-to-csv/blob/master/src/main/java/org/jsontocsv/writer/CSVWriter.java) would write the key value pairs to the specified file.
+Ce code peut être utilisé pour générer un fichier CSV plat à partir d'une liste d'objets JSON, et ainsi il génère un fichier Json à partir d'un fichier CSV. 
 
 #### Usage:
 
