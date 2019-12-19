@@ -28,6 +28,7 @@ considerons le fichier `test.json` dans le dossier `/files`, qui contient le for
 } ]
 ```
 - Fichier de Configuration
+A l'aide du fichier de configuration l'utilisateur peut choisir l'attribut source du fichier source et les mettre dans le fichier destination par exemple en prend la convertion du json to Csv l'utilisateur veut afficher sur son fichier le produit et la quantité du produit. 
 ```json
 {
     "CSV2Json": [],
