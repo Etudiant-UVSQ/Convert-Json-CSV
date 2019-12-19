@@ -10,6 +10,13 @@
 
     <name>ConvertJsonCSV</name>
     <!-- FIXME change it to the project's website -->
+    <description>Ce programme est un outil de conversion de fichier Json vers CSV et vice-Versa
+                Il permet entre autre de traduire en POJO un fichier fournit dans les différents format cité plus haut.
+                Il génère un fichier de configuration qui permet aux utilisateurs d'écrire des règles de conversions.
+                Vous pouvez le telecharger ou clonner ici: https://github.com/Etudiant-UVSQ/Convert-Json-CSV/archive/master.zip
+
+                Il a été développé et maintenu par OUEDRAOGO Hakim et EL KADI Kamal.
+    </description>
     <url>http://www.example.com</url>
 
     <properties>
@@ -64,9 +71,13 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>3.1.1</version>
-                <configuration>
-                    <javadocExecutable>${java.home}/bin/javadoc</javadocExecutable>
-                </configuration>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+
+                        </reports>
+                    </reportSet>
+                </reportSets>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
