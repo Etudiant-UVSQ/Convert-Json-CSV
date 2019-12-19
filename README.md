@@ -27,7 +27,18 @@ considerons le fichier `test.json` dans le dossier `/files`, qui contient le for
   "unitPrice" : 3.45
 } ]
 ```
-
+- Fichier de Configuration
+```json
+{
+    "CSV2Json": [],
+    "Json2CSV": {
+        "item": "item",
+        "quantity": "quantity",
+        "unitPrice": "unitPrice + quantite"
+    },
+    "name": "FichierConf"
+}
+```
 - JAVA code:
 ```java
 /*
