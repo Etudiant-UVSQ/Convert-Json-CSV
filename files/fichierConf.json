@@ -1,0 +1,9 @@
+{
+    "CSV2Json": [],
+    "Json2CSV": {
+        "item": "item",
+        "quantity": "quantity",
+        "unitPrice": "unitPrice + quantite"
+    },
+    "name": "FichierConf"
+}

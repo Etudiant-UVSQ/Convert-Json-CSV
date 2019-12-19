@@ -1,12 +1,22 @@
 package fr.uvsq.EtudiantUVSQ.Convertion;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.Scanner;
 
 
 import Exceptions.IncorrectFileExtensionException;
 import Exceptions.NotValidPathException;
+import com.eclipsesource.json.Json;
+import com.eclipsesource.json.JsonArray;
+import com.eclipsesource.json.JsonObject;
+import com.google.gson.Gson;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.json.JSONTokener;
 
 
 public class Main {
@@ -17,7 +27,17 @@ public class Main {
 		String url;
 		url=s.nextLine();
 		try {
-			if (url.toLowerCase().endsWith(".json")) traitementJson(url);
+			if (url.toLowerCase().endsWith(".json")) {
+				try {
+					traitementJson(url);
+				} catch (JSONException e) {
+					e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+				} catch (URISyntaxException e) {
+					e.printStackTrace();
+				}
+			}
 			else {
 				if (url.toLowerCase().endsWith(".csv"))traitementCSV(url);
 				else
@@ -37,8 +57,19 @@ public class Main {
 	 * @param cheminfichier
 	 *
 	 */
-	public static void traitementJson(String cheminfichier) throws NotValidPathException{
-
+	public static void traitementJson(String cheminfichier) throws NotValidPathException, JSONException, IOException, URISyntaxException {
+		String confPath=generationConf(cheminfichier);
+		if(!confPath.isEmpty()){
+			System.out.println("Nous avons déteter un fichier Identifier un fichier! Voulez-vous modifier le fichier de configuration? OUI/NON");
+			Scanner s = new Scanner(System.in);
+			String choix = s.nextLine();
+			if (choix.toLowerCase().equals("oui")){
+				System.out.println("Path du fichier de configuration; "+ confPath+" " +
+						"\n*[Reportez cous au fichier README pour mieux comprendre.]" +
+						"\n*[ Une fois le fichier modifié et enregistrer appuyer sur unr touche pour continuer... ]");
+			}
+		}
+		
 		String fichierOut;
 		Scanner s = new Scanner(System.in);
 		System.out.println("Saisissez le chemin absolu suivis du nom du fichier cible: ");
@@ -109,6 +140,31 @@ public class Main {
 	public static boolean isCorrectFileName(String fileName){
 		if (!fileName.isEmpty()) return true;
 		return false;
+	}
+
+	public static String generationConf(String cheminfichier) throws IOException, URISyntaxException, JSONException {
+		try{
+
+
+		JsonArray object = Json.parse(new FileReader(cheminfichier)).asArray();
+		JsonObject elem = object.get(0).asObject();
+		JsonObject conf = Json.parse(new FileReader("/root/IdeaProjects/Convert-Json-CSV/files/fichierConf.json")).asObject();
+
+		JsonObject attr = conf.get("Json2CSV").asObject();
+
+        for (int i = 0; i <=object.size() ; i++) {
+
+        	attr.add(elem.names().get(i),elem.names().get(i));
+        }
+        Writer out = new FileWriter("/root/IdeaProjects/Convert-Json-CSV/files/fichierConf.json");
+        JSONObject o = new JSONObject(conf.toString());
+		out.write(o.toString(4));
+			return "/root/IdeaProjects/Convert-Json-CSV/files/fichierConf.json";
+		}catch (Exception e){
+			return "null";
+		}
+
+
 	}
 
 }

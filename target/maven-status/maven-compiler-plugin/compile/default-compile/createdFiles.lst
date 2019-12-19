@@ -1,0 +1,12 @@
+fr/uvsq/EtudiantUVSQ/Convertion/CsvToPojo.class
+Exceptions/NotValidChoiceException.class
+fr/uvsq/EtudiantUVSQ/Convertion/ConvertCSVToJson.class
+fr/uvsq/EtudiantUVSQ/Convertion/JsonToPojo.class
+Exceptions/NotRedableException.class
+Exceptions/NotValidPathException.class
+fr/uvsq/EtudiantUVSQ/Convertion/Temp.class
+Exceptions/FileNotFoundException.class
+fr/uvsq/EtudiantUVSQ/Convertion/ConvertJsonToCSV.class
+fr/uvsq/EtudiantUVSQ/Convertion/Main.class
+fr/uvsq/EtudiantUVSQ/Convertion/JsonToPojo$1.class
+Exceptions/IncorrectFileExtensionException.class
