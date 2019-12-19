@@ -1,4 +1,4 @@
-package fr.uvsq.EtudiantUVSQ.ProjetConvertJsonToCsv;
+package fr.uvsq.EtudiantUVSQ.Convertion;
 
 import org.junit.*;
 
