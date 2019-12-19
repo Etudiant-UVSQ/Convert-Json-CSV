@@ -40,16 +40,41 @@ A l'aide du fichier de configuration l'utilisateur peut choisir l'attribut sourc
     "name": "FichierConf"
 }
 ```
-- JAVA code :
+- JAVA code : Cette procédure permet de Traitee des fichier JSON sens de conversion JSON vers CSV .
+Ce code utilise un fonction definit dans la méthode convertir dans la classe ConvertJsonToCSV qui permet la convertion du fichier JSON to CSV 
 ```java
-/*
- * Parse a JSON String and convert it to CSV
- */
-List<Map<String, String>> flatJson = JSONFlattener.parseJson(jsonString);
-// Using the default separator ','
-// If you want to use an other separator like ';' or '\t' use
-// CSVWriter.getCSV(flatJSON, separator) method
-CSVWriter.writeToFile(CSVWriter.getCSV(flatJson), "files/sample_string.csv");
+public static void traitementJson(String cheminfichier) throws NotValidPathException, JSONException, IOException, URISyntaxException {
+    String confPath=generationConf(cheminfichier);
+    if(!confPath.isEmpty()){
+       System.out.println("Nous avons déteter un fichier Identifier un fichier! Voulez-vous modifier le fichier de configuration? OUI/NON");
+	Scanner s = new Scanner(System.in);
+	String choix = s.nextLine();
+	if (choix.toLowerCase().equals("oui")){
+	 System.out.println("Path du fichier de configuration; "+ confPath+" " +
+		"\n*[Reportez cous au fichier README pour mieux comprendre.]" +
+		"\n*[ Une fois le fichier modifié et enregistrer appuyer sur unr touche pour continuer... ]");
+			}
+		}
+
+	String fichierOut;
+	Scanner s = new Scanner(System.in);
+	System.out.println("Saisissez le chemin absolu suivis du nom du fichier cible: ");
+	fichierOut = s.nextLine();
+
+	try (Scanner file = new Scanner(new File(cheminfichier))) {
+	  if (file.hasNextLine()) {
+	    if (ConvertJsonToCSV.convertir(new File(cheminfichier),"/root/IdeaProjects/Convert-Json-CSV/files/test2")){
+			System.out.println("Conversion réussi");
+			}else
+				System.out.println("Echec de la conversion Veillez réessayer");
+			}
+		} catch (FileNotFoundException err) {
+			if (!isCorrectFileName(cheminfichier)) {
+				throw new NotValidPathException("Le chemin Saisi n'est pas Valide", err);
+			}
+		}
+
+	}
 ```
 
 - CSV output :
@@ -59,66 +84,51 @@ item,quantity,unitPrice
 "Widget (10mm)",4,3.45
 
 ```
-2 - Using a JSON file:
+2 - Utilisation du fichier CSV:
 
-- JSON file :
+- Format du fichier Csv :
 
-considering the file `simple.json` in `/files` directory, contains the following JSON
-```json
-[
-    {
-        "studentName": "Foo",
-        "Age": "12",
-        "subjects": [
-            {
-                "name": "English",
-                "marks": "40"
-            },
-            {
-                "name": "History",
-                "marks": "50"
-            }
-        ]
-    },
-    {
-        "studentName": "Bar",
-        "Age": "12",
-        "subjects": [
-            {
-                "name": "English",
-                "marks": "40"
-            },
-            {
-                "name": "History",
-                "marks": "50"
-            },
-            {
-                "name": "Science",
-                "marks": "40"
-            }
-        ]
-    },
-    {
-        "studentName": "Baz",
-        "Age": "12",
-        "subjects": []
-    }
-]
+considerons le fichier `test.csv` dans le dossier `/files`, qui contient le format Csv
+```csv
+item,quantity,unitPrice
+"No. 9 Sprockets",12,1.23
+"Widget (10mm)",4,3.45
+
 ```
 
-- JAVA code :
+- JAVA code : Cette procédure permet de Traitee des fichier CSV sens de conversion CSV vers JSON .
+Ce code utilise un fonction definit dans la méthode convertir dans la classe ConvertCSVtoJson qui permet la convertion du fichier CSV to JSON 
 ```java
-/*
- *  Parse a JSON File and convert it to CSV
- */
-// There is 2 methods to parse the JSON file
-// 1- JSONFlattener#parseJson(File file):
-//    This will use the default encoding UTF-8 to parse the given file.
-// 2- JSONFlattener#parseJson(File file, String encoding):
-//    This will parse the file using the specified character encoding.
-flatJson = JSONFlattener.parseJson(new File("files/simple.json"), "UTF-8");
-// Using ';' as separator
-CSVWriter.writeToFile(CSVWriter.getCSV(flatJson, ";"), "files/sample_file.csv");
+public static void traitementCSV(String cheminfichier) throws NotValidPathException {
+
+   System.out.print(" * Traitement des fichier CSV: sens de conversion CSV vers Json * \n" +
+	"\t * !!!Attention pour ce cas il faut prealablement (avant l'execution) que le fichier java object correspondant\n" +
+	"\t * soit rennomé \"Temp.java\" et placé dans le même repertoire que ce fichier.\n"
+	+"\t* Il est implementé une fonction du POJO correspondant mais il faudra executé le program deux fois,\n" +
+	"\t * une fois pour la generation et la seconde pour la conversion.");
+	String fichierOut;
+	String rep;
+	Scanner s = new Scanner(System.in);
+	System.out.println("Saisissez le chemin absolu (uniquement) du fichier cible: ");
+	rep = s.nextLine();
+
+	System.out.println("Saisissez le nom du fichier cible: ");
+	fichierOut = s.nextLine();
+
+	try (Scanner file = new Scanner(new File(cheminfichier))) {
+	   if (file.hasNextLine()) {
+		if (ConvertCSVToJson.convertir(cheminfichier,fichierOut,rep)){
+			System.out.println("Conversion réussi");
+			}else
+				System.out.println("Echec de la conversion Veillez réessayer");
+			}
+		} catch (FileNotFoundException err) {
+			if (!isCorrectFileName(cheminfichier)) {
+				throw new NotValidPathException("Le chemin Saisi n'est pas Valide", err);
+			}
+		}
+
+	}
 ```
 - CSV output (see [/files/sample_file.csv](https://github.com/Arkni/json-to-csv/blob/master/files/sample_file.csv) file):
 ```csv
@@ -165,3 +175,4 @@ Arkni		Brahim
 
 #### Licence
 Ce projet est réaliser par EL KADI KAMAL et OUEDRAOGO Hamid-Abdoul Hakim.
+Projet CProg - 2019
