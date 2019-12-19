@@ -19,16 +19,17 @@ public class CsvToPojo {
      * un fichier CSV en Json
 
      * @param csvInputFile
-     * @param directoryOfjavaFile
+     *
      * @return javaOutPutFile or null
 
      */
-    public static File pojofromCsv(File csvInputFile, String directoryOfjavaFile)
+    public static File pojofromCsv(File csvInputFile)
     {
-        String className="TempCsvJava";
-        String packageName="fr.uvsq";
+        String directoryOfjavaFile="/root/IdeaProjects/Convert-Json-CSV/src/main/java";
+        String className="Temp";
+        String packageName="fr.uvsq.EtudiantUVSQ.Convertion";
         //csvInputFile=new File("/root/IdeaProjects/ConvertJsonCSV/src/main/java/fr/uvsq/test.csv");
-        String dir="/root/IdeaProjects/ConvertJsonCSV/src/main/java/";
+        //String dir="/root/IdeaProjects/ConvertJsonCSV/src/main/java/";
 
 
         try(BufferedReader stream = new BufferedReader(new FileReader(csvInputFile))) {

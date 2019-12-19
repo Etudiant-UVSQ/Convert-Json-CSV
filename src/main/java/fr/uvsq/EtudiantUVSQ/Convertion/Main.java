@@ -30,6 +30,13 @@ public class Main {
 
 
 	}
+	/**
+	 * Traitement des fichier Json
+	 * sens de conversion Json vers CSV
+	 *
+	 * @param cheminfichier
+	 *
+	 */
 	public static void traitementJson(String cheminfichier) throws NotValidPathException{
 
 		String fichierOut;
@@ -39,7 +46,7 @@ public class Main {
 
 		try (Scanner file = new Scanner(new File(cheminfichier))) {
 			if (file.hasNextLine()) {
-				if (ConvertJsonToCSV.convertir(new File(cheminfichier),fichierOut)){
+				if (ConvertJsonToCSV.convertir(new File(cheminfichier),"/root/IdeaProjects/Convert-Json-CSV/files/test2")){
 					System.out.println("Conversion réussi");
 				}else
 					System.out.println("Echec de la conversion Veillez réessayer");
@@ -51,17 +58,40 @@ public class Main {
 		}
 
 	}
+	/**
+	 * Traitement des fichier CSV
+	 * sens de conversion CSV vers Json
+	 *
+	 * !!!Attention pour ce cas il faut prealablement que le fichier java object correspondant
+	 * soit rennomé "Temp.java" et placé dans le même repertoire que ce fichier.
+	 *
+	 * Il est implementé une fonction du POJO correspondant mais il faudra executé le program deux fois,
+	 * une fois pour la generation et la seconde pour la conversion
+	 *
+	 * @param cheminfichier
+	 *
+
+	 */
 
 	public static void traitementCSV(String cheminfichier) throws NotValidPathException {
 
+		System.out.print(" * Traitement des fichier CSV: sens de conversion CSV vers Json * \n" +
+				"\t * !!!Attention pour ce cas il faut prealablement (avant l'execution) que le fichier java object correspondant\n" +
+				"\t * soit rennomé \"Temp.java\" et placé dans le même repertoire que ce fichier.\n"
+				+"\t* Il est implementé une fonction du POJO correspondant mais il faudra executé le program deux fois,\n" +
+				"\t * une fois pour la generation et la seconde pour la conversion.");
 		String fichierOut;
+		String rep;
 		Scanner s = new Scanner(System.in);
-		System.out.println("Saisissez le chemin absolu suivis du nom du fichier cible: ");
+		System.out.println("Saisissez le chemin absolu (uniquement) du fichier cible: ");
+		rep = s.nextLine();
+
+		System.out.println("Saisissez le nom du fichier cible: ");
 		fichierOut = s.nextLine();
 
 		try (Scanner file = new Scanner(new File(cheminfichier))) {
 			if (file.hasNextLine()) {
-				if (ConvertJsonToCSV.convertir(new File(cheminfichier),fichierOut)){
+				if (ConvertCSVToJson.convertir(cheminfichier,fichierOut,rep)){
 					System.out.println("Conversion réussi");
 				}else
 					System.out.println("Echec de la conversion Veillez réessayer");

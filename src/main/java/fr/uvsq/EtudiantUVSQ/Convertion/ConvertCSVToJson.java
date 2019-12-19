@@ -17,22 +17,31 @@ public class ConvertCSVToJson {
 
 	 * @param fichierIn
 	 * @param fichierOut
-
+     * @return true or false
 	 */
-	public static void convertir(String fichierIn,String fichierOut)  {
+	public static boolean convertir(String fichierIn,String fichierOut,String repDest){
 
+		String fichierOutJson = repDest  + fichierOut + "Json.json";
 		try {
 			CsvSchema orderLineSchema = CsvSchema.emptySchema().withHeader();
 			CsvMapper csvMapper = new CsvMapper();
-			MappingIterator<OrderLine> orderLines = csvMapper.readerFor(OrderLine.class)
-			  .with(orderLineSchema)
-			  .readValues(new File(fichierIn));
+			File file=new File(fichierIn);
+			CsvToPojo.pojofromCsv(file);
+
+			MappingIterator<Class> orderLines = csvMapper.readerFor(Temp.class)
+					.with(orderLineSchema)
+					.readValues(new File(fichierIn));
 			new ObjectMapper()
-			  .configure(SerializationFeature.INDENT_OUTPUT, true)
-			  .writeValue(new File(fichierOut), orderLines.readAll());
+					.configure(SerializationFeature.INDENT_OUTPUT, true)
+					.writeValue(new File(fichierOutJson), orderLines.readAll());
+			System.out.println(orderLines.readAll());
+
+			return true;
 		} catch (Exception e) {
 			System.out.println("Erreur message : " + e.getMessage());
+
+			return false;
 		}
-		
+
 	}
 }
