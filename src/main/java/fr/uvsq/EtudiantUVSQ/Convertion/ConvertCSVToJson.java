@@ -17,6 +17,7 @@ public class ConvertCSVToJson {
 
 	 * @param fichierIn
 	 * @param fichierOut
+	 * @param repDest repetoire de destination
      * @return true or false
 	 */
 	public static boolean convertir(String fichierIn,String fichierOut,String repDest){
