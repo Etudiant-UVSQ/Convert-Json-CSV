@@ -69,7 +69,7 @@ public class Main {
 						"\n*[ Une fois le fichier modifié et enregistrer appuyer sur unr touche pour continuer... ]");
 			}
 		}
-		
+
 		String fichierOut;
 		Scanner s = new Scanner(System.in);
 		System.out.println("Saisissez le chemin absolu suivis du nom du fichier cible: ");
