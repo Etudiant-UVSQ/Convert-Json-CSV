@@ -14,7 +14,7 @@ Ce programme est un outil de conversion de fichier Json vers CSV et vice-Versa
 
 1 - Utilisation du fichier Json:
 
-- format du fichier Json:
+- format du fichier Json : 
 considerons le fichier `test.json` dans le dossier `/files`, qui contient le format Json
 ```json
 [ {
@@ -27,8 +27,8 @@ considerons le fichier `test.json` dans le dossier `/files`, qui contient le for
   "unitPrice" : 3.45
 } ]
 ```
-- Fichier de Configuration
-A l'aide du fichier de configuration l'utilisateur peut choisir l'attribut source du fichier source et les mettre dans le fichier destination par exemple en prend la convertion du json to Csv l'utilisateur veut afficher sur son fichier le produit et la quantité du produit. 
+- Fichier de Configuration : 
+A l'aide du fichier de configuration l'utilisateur peut choisir l'attribut source du fichier source et les mettre dans le fichier destination par exemple en prend la convertion du json to Csv l'utilisateur veut afficher sur son fichier cible le produit et la quantité du produit. 
 ```json
 {
     "CSV2Json": [],
@@ -40,7 +40,7 @@ A l'aide du fichier de configuration l'utilisateur peut choisir l'attribut sourc
     "name": "FichierConf"
 }
 ```
-- JAVA code:
+- JAVA code :
 ```java
 /*
  * Parse a JSON String and convert it to CSV
@@ -52,7 +52,7 @@ List<Map<String, String>> flatJson = JSONFlattener.parseJson(jsonString);
 CSVWriter.writeToFile(CSVWriter.getCSV(flatJson), "files/sample_string.csv");
 ```
 
-- CSV output:
+- CSV output :
 ```csv
 item,quantity,unitPrice
 "No. 9 Sprockets",12,1.23
@@ -61,7 +61,7 @@ item,quantity,unitPrice
 ```
 2 - Using a JSON file:
 
-- JSON file:
+- JSON file :
 
 considering the file `simple.json` in `/files` directory, contains the following JSON
 ```json
@@ -106,7 +106,7 @@ considering the file `simple.json` in `/files` directory, contains the following
 ]
 ```
 
-- JAVA code:
+- JAVA code :
 ```java
 /*
  *  Parse a JSON File and convert it to CSV
@@ -130,7 +130,7 @@ Age;subjects[1].marks;subjects[1].name;subjects[2].marks;subjects[2].name;studen
 
 3 - Using a JSON returned from a URL:
 
-- JAVA code:
+- JAVA code :
 ```java
 /*
  *  Parse JSON from URL and convert it to CSV
@@ -145,7 +145,7 @@ flatJson = JSONFlattener.parseJson(new URI("http://echo.jsontest.com/firstname/B
 CSVWriter.writeToFile(CSVWriter.getCSV(flatJson, "\t"), "files/sample_uri.csv");
 ```
 
-- JSON:
+- JSON :
 
 for this example, I used the web service [echo.jsontest.com](http://echo.jsontest.com) to echo a JSON object like the following
 ```json
@@ -161,12 +161,7 @@ lastName	firstname
 Arkni		Brahim
 ```
 
-#### N.B:
-- The column names would dynamically be generated based on the keys in the JSON object.
-- The order of the JSON keys will not preserved during JSON conversion to CSV, See this [StackOverFlow question](http://stackoverflow.com/questions/4515676/keep-the-order-of-the-json-keys-during-json-conversion-to-csv) for more information.
 
-
-The sample output files can be seen [here](https://github.com/Arkni/json-to-csv/blob/master/files).
 
 #### Licence
 Ce projet est réaliser par EL KADI KAMAL et OUEDRAOGO Hamid-Abdoul Hakim.
