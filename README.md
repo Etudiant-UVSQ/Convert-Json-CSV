@@ -3,7 +3,7 @@
 Conversion de JSON à CSV
 Il s'agit d'une version modifiée du projet json-to-csv.
 
-Ce code peut être utilisé pour générer un fichier CSV plat à partir d'une liste d'objets JSON, et ainsi il génère un fichier Json à partir d'un fichier CSV. 
+Ce code peut être utilisé pour générer un fichier CSV à partir d'une liste d'objets JSON, et ainsi il génère un fichier Json à partir d'un fichier CSV. 
 
 #### Usage de l'application:
 
@@ -144,4 +144,4 @@ Arkni		Brahim
 The sample output files can be seen [here](https://github.com/Arkni/json-to-csv/blob/master/files).
 
 #### Licence
-Ce projet est réaliser par EL KADI KAMAL.
+Ce projet est réaliser par EL KADI KAMAL et OUEDRAOGO Hamid-Abdoul Hakim.
