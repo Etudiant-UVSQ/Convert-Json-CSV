@@ -1,20 +1,31 @@
-#### JSON To CSV Convert
+#### Outil de conversion
 
-Conversion de JSON à CSV
-Il s'agit d'une version modifiée du projet json-to-csv.
+Conversion de JSON à CSV et vice Versa
 
-Ce code peut être utilisé pour générer un fichier CSV à partir d'une liste d'objets JSON, et ainsi il génère un fichier Json à partir d'un fichier CSV. 
+Ce programme est un outil de conversion de fichier Json vers CSV et vice-Versa
+ Il permet entre autre de traduire en POJO un fichier fournit dans les différents format cité plus haut.
+   Il génère un fichier de configuration qui permet aux utilisateurs d'écrire des règles de conversions.
+   
+   Il a été réaliser en Java 8; il utilise principalement des bibliothèques de traitements de fichiers Json (Jackson & Gson). 
+   
+    
 
 #### Usage de l'application:
 
-1 - Using a JSON String:
+1 - Utilisation du fichier Json:
 
-- JSON string:
+- format du fichier Json:
+considerons le fichier `test.json` dans le dossier `/files`, qui contient le format Json
 ```json
-{
-	"firstName": "Brahim",
-	"lastName": "Arkni"
-}
+[ {
+  "item" : "No. 9 Sprockets",
+  "quantity" : 12,
+  "unitPrice" : 1.23
+}, {
+  "item" : "Widget (10mm)",
+  "quantity" : 4,
+  "unitPrice" : 3.45
+} ]
 ```
 
 - JAVA code:
@@ -31,8 +42,10 @@ CSVWriter.writeToFile(CSVWriter.getCSV(flatJson), "files/sample_string.csv");
 
 - CSV output:
 ```csv
-lastName,firstname
-Arkni,Brahim
+item,quantity,unitPrice
+"No. 9 Sprockets",12,1.23
+"Widget (10mm)",4,3.45
+
 ```
 2 - Using a JSON file:
 
