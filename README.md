@@ -130,45 +130,22 @@ public static void traitementCSV(String cheminfichier) throws NotValidPathExcept
 
 	}
 ```
-- CSV output (see [/files/sample_file.csv](https://github.com/Arkni/json-to-csv/blob/master/files/sample_file.csv) file):
-```csv
-Age;subjects[1].marks;subjects[1].name;subjects[2].marks;subjects[2].name;studentName;subjects[3].marks;subjects[3].name
-12;40;English;50;History;Foo;;
-12;40;English;50;History;Bar;40;Science
-12;;;;;Baz;;
-```
 
-3 - Using a JSON returned from a URL:
 
-- JAVA code :
-```java
-/*
- *  Parse JSON from URL and convert it to CSV
- */
-// There is 2 methods to parse a JSON returned from a URI
-// 1- JSONFlattener#parseJson(URI uri):
-//    This will use the default encoding UTF-8 to parse the JSON returned from the given uri.
-// 2- JSONFlattener#parseJson(URI uri, String encoding):
-//    This will parse the JSON returned from the uri using the specified character encoding.
-flatJson = JSONFlattener.parseJson(new URI("http://echo.jsontest.com/firstname/Brahim/lastName/Arkni"));
-// Using '\t' as separator
-CSVWriter.writeToFile(CSVWriter.getCSV(flatJson, "\t"), "files/sample_uri.csv");
-```
 
-- JSON :
+- JSON output :
 
-for this example, I used the web service [echo.jsontest.com](http://echo.jsontest.com) to echo a JSON object like the following
+
 ```json
-{
-	"firstName": "Brahim",
-	"lastName": "Arkni"
-}
-```
-
-- CSV output (see [/files/sample_uri.csv](https://github.com/Arkni/json-to-csv/blob/master/files/sample_file.csv) file):
-```csv
-lastName	firstname
-Arkni		Brahim
+[ {
+  "item" : "No. 9 Sprockets",
+  "quantity" : 12,
+  "unitPrice" : 1.23
+}, {
+  "item" : "Widget (10mm)",
+  "quantity" : 4,
+  "unitPrice" : 3.45
+} ]
 ```
 
 
