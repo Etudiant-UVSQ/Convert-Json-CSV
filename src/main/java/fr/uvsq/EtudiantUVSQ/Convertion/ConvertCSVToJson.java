@@ -11,16 +11,25 @@ import com.fasterxml.jackson.dataformat.csv.CsvSchema;
 
 public class ConvertCSVToJson {
 
-	public static void main(String[] args)  {
+	/**
+	 * Cette methode permet de convertir
+	 * un fichier CSV en Json
+
+	 * @param fichierIn
+	 * @param fichierOut
+
+	 */
+	public static void convertir(String fichierIn,String fichierOut)  {
+
 		try {
 			CsvSchema orderLineSchema = CsvSchema.emptySchema().withHeader();
 			CsvMapper csvMapper = new CsvMapper();
 			MappingIterator<OrderLine> orderLines = csvMapper.readerFor(OrderLine.class)
 			  .with(orderLineSchema)
-			  .readValues(new File("files/test.csv"));
+			  .readValues(new File(fichierIn));
 			new ObjectMapper()
 			  .configure(SerializationFeature.INDENT_OUTPUT, true)
-			  .writeValue(new File("files/test1.json"), orderLines.readAll());
+			  .writeValue(new File(fichierOut), orderLines.readAll());
 		} catch (Exception e) {
 			System.out.println("Erreur message : " + e.getMessage());
 		}

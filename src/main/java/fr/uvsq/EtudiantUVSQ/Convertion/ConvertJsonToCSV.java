@@ -9,12 +9,20 @@ import java.io.File;
 
 public class ConvertJsonToCSV {
 
-    public static boolean convertir(String fichierIn, String fichierOut) {
+    /**
+     * Cette methode permet de convertir
+     * un fichier CSV en Json
 
-        fichierIn = "/root/IdeaProjects/ConvertJsonCSV/src/main/java/fr/uvsq/test.json";
+     * @param fichierIn
+     * @param fichierOut
+
+     */
+    public static boolean convertir(File fichierIn, String fichierOut) {
+
+        //fichierIn = new File("/root/IdeaProjects/ConvertJsonCSV/src/main/java/fr/uvsq/test.json");
         fichierOut = "." + File.separator + fichierOut + "CSV.csv";
         try {
-            JsonNode jsonTree = new ObjectMapper().readTree(new File(fichierIn));
+            JsonNode jsonTree = new ObjectMapper().readTree(fichierIn);
             CsvSchema.Builder csvSchemaBuilder = CsvSchema.builder();
             JsonNode firstObject = jsonTree.elements().next();
 
@@ -25,7 +33,7 @@ public class ConvertJsonToCSV {
             CsvMapper csvMapper = new CsvMapper();
             csvMapper.writerFor(JsonNode.class)
                     .with(csvSchema)
-                    .writeValue(new File(fichierOut), jsonTree);
+                    .writeValue(new File("file/test2.csv"), jsonTree);
             return true;
         } catch (Exception e) {
             System.out.println("Erreur message : " + e.getMessage());

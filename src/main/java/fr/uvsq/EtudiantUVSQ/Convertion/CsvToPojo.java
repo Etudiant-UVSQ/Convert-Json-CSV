@@ -4,12 +4,30 @@ import java.io.*;
 import org.apache.commons.*;
 import org.apache.commons.lang3.StringEscapeUtils;
 
-public class Csv2Pojo {
+/**
+ * Cette methode permet de convertir
+ * un fichier CSV en Json
+
+ */
+
+public class CsvToPojo {
+
+
+
+    /**
+     * Methode pour la conversion d'un fichier CSV en JAVA
+     * un fichier CSV en Json
+
+     * @param csvInputFile
+     * @param directoryOfjavaFile
+     * @return javaOutPutFile or null
+
+     */
     public static File pojofromCsv(File csvInputFile, String directoryOfjavaFile)
     {
         String className="TempCsvJava";
         String packageName="fr.uvsq";
-        csvInputFile=new File("/root/IdeaProjects/ConvertJsonCSV/src/main/java/fr/uvsq/test.csv");
+        //csvInputFile=new File("/root/IdeaProjects/ConvertJsonCSV/src/main/java/fr/uvsq/test.csv");
         String dir="/root/IdeaProjects/ConvertJsonCSV/src/main/java/";
 
 
