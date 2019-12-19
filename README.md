@@ -12,10 +12,10 @@ Ce programme est un outil de conversion de fichier Json vers CSV et vice-Versa
 
 #### Usage de l'application:
 
-1 - Using a JSON String:
+1 - Utilisation du fichier Json:
 
-- JSON file format:
-considering the file `test.json` in `/files` directory, contains the following JSON
+- format du fichier Json:
+considerons le fichier `test.json` dans le dossier `/files`, qui contient le format Json
 ```json
 [ {
   "item" : "No. 9 Sprockets",
